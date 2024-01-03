@@ -279,8 +279,10 @@ onMounted(() => {
               </button>
             </div>
             <div class="grid grid-cols-2 gap-4">
-              <div class="flex justify-start p-2">
-                <!-- <i class="p-1 opacity-[0.7] fa-solid fa-location-dot fa-xl"></i> -->
+              <div class="flex items-start justify-start p-2">
+                <div class="pr-1">
+                  <i class="fa-solid fa-temperature-three-quarters fa-xl"></i>
+                </div>
                 <div class="info px-1">
                   <p class="text-xl pt-[1px] opacity-[0.7]">Real Feel</p>
                   <p class="text-3xl pt-1 font-semibold">
@@ -289,7 +291,9 @@ onMounted(() => {
                 </div>
               </div>
               <div class="flex justify-start p-2">
-                <!-- <i class="p-1 opacity-[0.7] fa-solid fa-location-dot fa-xl"></i> -->
+                <div class="pr-1">
+                  <i class="fa-solid fa-wind fa-xl"></i>
+                </div>
                 <div class="info px-1">
                   <p class="text-xl pt-[1px] opacity-[0.7]">Wind speed</p>
                   <p class="text-3xl pt-1 font-semibold">
@@ -298,7 +302,9 @@ onMounted(() => {
                 </div>
               </div>
               <div class="flex justify-start p-2">
-                <!-- <i class="p-1 opacity-[0.7] fa-solid fa-location-dot fa-xl"></i> -->
+                <div class="pr-1">
+                  <i class="fa-solid fa-cloud-rain fa-xl"></i>
+                </div>
                 <div class="info px-1">
                   <p class="text-xl pt-[1px] opacity-[0.7]">Chance of rain</p>
                   <p class="text-3xl pt-1 font-semibold">
@@ -307,7 +313,9 @@ onMounted(() => {
                 </div>
               </div>
               <div class="flex justify-start p-2">
-                <!-- <i class="p-1 opacity-[0.7] fa-solid fa-location-dot fa-xl"></i> -->
+                <div class="pr-1">
+                  <i class="fa-solid fa-cloud fa-xl"></i>
+                </div>
                 <div class="info px-1">
                   <p class="text-xl pt-[1px] opacity-[0.7]">Cloud cover</p>
                   <p class="text-3xl pt-1 font-semibold">

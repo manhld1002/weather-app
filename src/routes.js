@@ -7,7 +7,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     { path: '/', component: WeatherPage, },
-    { path: '/detail/:id?', component: LocationInfo, name: 'detail', props: true }
+    { path: '/detail/:id?', component: LocationInfo, name: 'detail'}
   ]
 })
 
