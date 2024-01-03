@@ -12,3 +12,4 @@ export function formatTime(time) {
 
   return `${hours}:${formattedMinutes}`
 }
+

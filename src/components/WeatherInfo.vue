@@ -28,7 +28,7 @@ const emit = defineEmits(['close-info'])
     <!-- Other condition -->
     <div v-if="condition.detailsStr == 'cdn'" class="grid grid-cols-3 gap-2">
       <!-- Wind speed -->
-      <div class="text-center flex-1">
+      <div class="text-center flex-1 " >
         <i class="fa-solid fa-wind mb text-2xl"></i>
         <p class="text-xl font-bold">
           {{ Math.round(condition.results.forecast.forecastday[0].day.maxtemp_c) }}&deg; /
@@ -39,7 +39,7 @@ const emit = defineEmits(['close-info'])
         <p>max/min temperature</p>
       </div>
       <!-- Humidity level -->
-      <div class="text-center flex-1">
+      <div class="text-center flex-1 " >
         <i class="fa-solid fa-droplet mb text-2xl"></i>
         <p class="text-xl font-bold">
           {{ condition.results.forecast.forecastday[0].day.avghumidity }}%
@@ -47,7 +47,7 @@ const emit = defineEmits(['close-info'])
         <p>Avg humidity</p>
       </div>
       <!-- Precipitation -->
-      <div class="text-center flex-1">
+      <div class="text-center flex-1 " >
         <i class="fa-solid fa-umbrella mb text-2xl"></i>
         <p class="text-xl font-bold">
           {{ condition.results.forecast.forecastday[0].day.totalprecip_mm }} mm
@@ -55,13 +55,13 @@ const emit = defineEmits(['close-info'])
         <p>precipitation</p>
       </div>
       <!-- Wind direction -->
-      <div class="text-center flex-1">
+      <div class="text-center flex-1 " >
         <i class="fa-solid fa-fan mb text-2xl"></i>
         <p class="text-xl font-bold">{{ condition.results.current.wind_dir }}</p>
         <p>Wind direction</p>
       </div>
       <!-- Feels like -->
-      <div class="text-center flex-1">
+      <div class="text-center flex-1 " >
         <i class="fa-solid fa-temperature-half mb text-2xl"></i>
         <p class="text-xl font-bold">
           {{ condition.results.forecast.forecastday[0].day.avgvis_km }} km/h
@@ -69,7 +69,7 @@ const emit = defineEmits(['close-info'])
         <p>Vision</p>
       </div>
       <!-- UV -->
-      <div class="text-center flex-1">
+      <div class="text-center flex-1 " >
         <i class="fa-solid fa-sun mb text-2xl"></i>
         <p class="text-xl font-bold">{{ condition.results.forecast.forecastday[0].day.uv }}</p>
         <p>UV index</p>
@@ -84,7 +84,7 @@ const emit = defineEmits(['close-info'])
         :key="hour"
         class="divide-gray-300 p-1"
       >
-        <li class="py-2">
+        <li class="py-2 " >
           <div class="gen-info overflow-y-auto">
             <div class="grid grid-cols-4 gap-6">
               <div class="flex items-center justify-start">

@@ -45,6 +45,11 @@ const getScreenClasses = computed(() => ({
   'text-gray-500': weatherDetails.results?.current?.is_day === 1
 }))
 
+const getHoverClass = computed(() => ({
+  'hover:bg-blue-100': weatherDetails.results.current.is_day === 1,
+  'hover:bg-zinc-600': weatherDetails.results.current.is_day === 0
+}))
+
 // data either from local storage or API
 const fetchWeatherData = async () => {
   if (route.currentRoute.value.query.data !== undefined) {
@@ -73,23 +78,19 @@ const getLocationInfo = () => {
 
 // Save data to local
 const saveToLocal = (name, region) => {
-  const savedArr = JSON.parse(localStorage.getItem('arrayForecast'))
-  const itemName = savedArr.findIndex((item) => item.location.name === name)
-  const itemRegion = savedArr.findIndex((item) => item.location.region === region)
-  if (itemName == -1 || itemRegion == -1) {
-    const savedArr = localStorage.getItem('arrayForecast')
-    if (savedArr == null) {
-      const savedArr = [weatherDetails.results]
+  let savedArr = JSON.parse(localStorage.getItem('arrayForecast')) || []
+  if (savedArr == null) {
+    savedArr.push(weatherDetails.results)
+    localStorage.setItem('arrayForecast', JSON.stringify(savedArr))
+    alert('Forecast added!')
+  } else {
+    const itemName = savedArr.findIndex((item) => item.location.name === name)
+    const itemRegion = savedArr.findIndex((item) => item.location.region === region)
+    if (itemName == -1 || itemRegion == -1) {
+      savedArr.push(weatherDetails.results)
       localStorage.setItem('arrayForecast', JSON.stringify(savedArr))
       alert('Forecast added!')
-    } else {
-      const existArr = JSON.parse(savedArr)
-      existArr.push(weatherDetails.results)
-      localStorage.setItem('arrayForecast', JSON.stringify(existArr))
-      alert('Forecast added!')
-    }
-  } else {
-    if (confirm('Already have this forecast. Continue add?')) {
+    } else if (confirm('Already have this forecast. Continue add?')) {
       savedArr.splice(itemName, 1)
       savedArr.push(weatherDetails.results)
       localStorage.setItem('arrayForecast', JSON.stringify(savedArr))
@@ -228,10 +229,7 @@ onMounted(() => {
               v-for="hour in filteredHours"
               :key="hour"
               class="info flex-1 border-white-400 border-r-[1px] flex flex-col justify-center items-center rounded-2xl"
-              :class="{
-                'hover:bg-blue-100': weatherDetails.results.current.is_day === 1,
-                'hover:bg-zinc-600': weatherDetails.results.current.is_day === 0
-              }"
+              :class="getHoverClass"
             >
               <ul class="">
                 <li class="text-center py-4">
@@ -279,7 +277,7 @@ onMounted(() => {
               </button>
             </div>
             <div class="grid grid-cols-2 gap-4">
-              <div class="flex items-start justify-start p-2">
+              <div class="flex justify-start p-2 rounded-2xl" :class="getHoverClass">
                 <div class="pr-1">
                   <i class="fa-solid fa-temperature-three-quarters fa-xl"></i>
                 </div>
@@ -290,7 +288,7 @@ onMounted(() => {
                   </p>
                 </div>
               </div>
-              <div class="flex justify-start p-2">
+              <div class="flex justify-start p-2 rounded-2xl" :class="getHoverClass">
                 <div class="pr-1">
                   <i class="fa-solid fa-wind fa-xl"></i>
                 </div>
@@ -301,7 +299,7 @@ onMounted(() => {
                   </p>
                 </div>
               </div>
-              <div class="flex justify-start p-2">
+              <div class="flex justify-start p-2 rounded-2xl" :class="getHoverClass">
                 <div class="pr-1">
                   <i class="fa-solid fa-cloud-rain fa-xl"></i>
                 </div>
@@ -312,7 +310,7 @@ onMounted(() => {
                   </p>
                 </div>
               </div>
-              <div class="flex justify-start p-2">
+              <div class="flex justify-start p-2 rounded-2xl" :class="getHoverClass">
                 <div class="pr-1">
                   <i class="fa-solid fa-cloud fa-xl"></i>
                 </div>
@@ -342,10 +340,7 @@ onMounted(() => {
           v-for="day in weatherDetails.results.forecast.forecastday"
           :key="day"
           class="rounded-2xl x-2 px-2 py-1"
-          :class="{
-            'hover:bg-blue-100': weatherDetails.results.current.is_day === 1,
-            'hover:bg-zinc-600': weatherDetails.results.current.is_day === 0
-          }"
+          :class="getHoverClass"
         >
           <div class="grid grid-cols-3 gap-6">
             <div class="flex items-center justify-start">
