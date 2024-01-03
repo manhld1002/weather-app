@@ -60,7 +60,7 @@ onMounted(() => {
         <i class="fa-solid fa-magnifying-glass p-2 text-indigo-600"></i>
         <input
           type="text"
-          placeholder="Search for a place"
+          placeholder="Search for a location"
           class="rounded-r-lg p-2 border-0 outline-0 ring-inset w-full"
           v-model="searchInput.input"
           @input="handleSearch"
@@ -82,6 +82,10 @@ onMounted(() => {
       </div>
     </div>
 
+
+    <div class="py-2 text-2xl underline">
+      <p>Saved forecasts ({{ savedForecastArr.length }}): </p>
+    </div>
     <!-- List LS forecasts  -->
     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 py-4">
       <div
@@ -118,6 +122,9 @@ onMounted(() => {
           </div>
         </div>
       </div>
+    </div>
+    <div v-if="savedForecastArr.length == 0">
+    <h1>No current forecast saved. </h1>
     </div>
   </div>
 </template>

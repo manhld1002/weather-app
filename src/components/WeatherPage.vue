@@ -29,4 +29,5 @@ const addPlace = (data) => {
   <div class="px-6">
     <SearchField @place-data="addPlace"> </SearchField>
   </div>
+  
 </template>
